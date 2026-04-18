@@ -1,0 +1,140 @@
+@import "tailwindcss";
+
+/* ===================================
+   ZEROJUICE UNIFIED DESIGN SYSTEM
+   =================================== */
+
+@theme {
+  /* === PRIMARY COLORS === */
+  --color-primary: #FBBF24;
+  --color-primary-hover: #F59E0B;
+  --color-secondary: #1F2937;
+  --color-background-light: #F9FAFB;
+  --color-stripe-yellow: rgba(251, 191, 36, 0.15);
+  
+  /* === BRAND COLORS === */
+  --color-brand-yellow: #FBBF24;
+  --color-brand-black: #1F2937;
+  
+  /* === SIDEBAR COLORS === */
+  --color-sidebar-black: #1F2937;
+  --color-hazard-black: #1a1a1a;
+  --color-hazard-dark-gray: #262626;
+  
+  /* === SURFACE COLORS === */
+  --color-surface-light: #FFFFFF;
+  --color-card-bg: #FFFFFF;
+  --color-main-bg: #F9FAFB;
+  
+  /* === TEXT COLORS === */
+  --color-text-primary: #111827;
+  --color-text-main: #111827;
+  --color-text-secondary: #6B7280;
+  
+  /* === BORDER COLORS === */
+  --color-border-light: #E5E7EB;
+  
+  /* === FONT FAMILIES === */
+  --font-sans: Inter, sans-serif;
+  --font-mono: "Share Tech Mono", monospace;
+  --font-display: Inter, sans-serif;
+  
+  /* === BORDER RADIUS === */
+  --radius: 0.5rem;
+  
+  /* === SHADOWS === */
+  --shadow-soft: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+}
+
+/* ===================================
+   UTILITY CLASSES
+   =================================== */
+
+@layer utilities {
+  /* === ZEBRA TABLE === */
+  .zebra-table tbody tr:nth-child(even) {
+    @apply bg-gray-100;
+  }
+  
+  .zebra-table tbody tr:hover {
+    @apply bg-primary/20 transition-colors duration-200;
+  }
+  
+  /* === PLATE NUMBER === */
+  .plate-number {
+    font-family: var(--font-mono);
+    letter-spacing: 0.05em;
+  }
+  
+  /* === NAVIGATION === */
+  .nav-link.active {
+    @apply bg-primary text-black font-semibold;
+  }
+  
+  /* === HAZARD PATTERNS === */
+  .bg-hazard-stripe {
+    background: repeating-linear-gradient(
+      45deg,
+      #FBBF24,
+      #FBBF24 10px,
+      #000000 10px,
+      #000000 20px
+    );
+  }
+  
+  .bg-hazard-pattern {
+    background: repeating-linear-gradient(
+      45deg,
+      #FBBF24,
+      #FBBF24 10px,
+      #000000 10px,
+      #000000 20px
+    );
+  }
+  
+  .hazard-border {
+    border: 3px solid #FBBF24;
+    box-shadow: 0 0 0 3px #000000;
+  }
+  
+  /* === ANIMATIONS === */
+  @keyframes scan {
+    0% {
+      top: 0;
+    }
+    100% {
+      top: 90%;
+    }
+  }
+  
+  .animate-scan {
+    animation: scan 3s linear infinite;
+  }
+  
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 5px rgba(251, 191, 36, 0.5);
+    }
+    50% {
+      box-shadow: 0 0 20px rgba(251, 191, 36, 0.8);
+    }
+  }
+  
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+  
+  /* === HOVER EFFECTS === */
+  .hover-lift {
+    @apply transition-transform duration-200;
+  }
+  
+  .hover-lift:hover {
+    @apply -translate-y-1;
+  }
+  
+  /* === SHADOW EFFECTS === */
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+}
