@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<root main_tree_to_execute="MainTree">
+  <BehaviorTree ID="MainTree">
+    <RecoveryNode name="NavigateRecovery" number_of_retries="5">
+      <Sequence name="NavigateThroughPoses">
+        <ComputePathThroughPoses goals="{goals}" path="{path}" planner_id="SmacHybridDubins"/>
+        <FollowPath path="{path}" controller_id="FollowPath"/>
+      </Sequence>
+      <Sequence name="RecoveryActions">
+        <BackUp backup_dist="0.3" backup_speed="0.15"/>
+      </Sequence>
+    </RecoveryNode>
+  </BehaviorTree>
+</root>

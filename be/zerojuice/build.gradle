@@ -1,0 +1,76 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.5.9'
+	id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.zerojuice'
+version = '0.0.1-SNAPSHOT'
+description = 'ZeroJuice: 자율주행 차량을 위한 스마트 주차 관제 시스템'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(21)
+	}
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	// Spring Boot Starters
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	
+	// Swagger UI (OpenAPI 3.0)
+	// 2.3.0 -> 2.8.3으로 변경 (스프링 부트 3.4 호환 버전)
+	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.3'
+	
+	// JWT
+	implementation 'io.jsonwebtoken:jjwt-api:0.12.5'
+	runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.12.5'
+	runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.12.5'
+	
+	// MQTT
+	implementation 'org.springframework.integration:spring-integration-mqtt'
+	implementation 'org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.2.5'
+	
+	// FCM (Firebase Cloud Messaging)
+	implementation 'com.google.firebase:firebase-admin:9.2.0'
+	
+	// Database
+	runtimeOnly 'com.mysql:mysql-connector-j'
+
+	// redis
+	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+    implementation 'com.fasterxml.jackson.core:jackson-databind' // JSON 처리용
+	
+	// Lombok
+	compileOnly 'org.projectlombok:lombok:1.18.30'
+	annotationProcessor 'org.projectlombok:lombok:1.18.30'
+	testCompileOnly 'org.projectlombok:lombok:1.18.30'
+	testAnnotationProcessor 'org.projectlombok:lombok:1.18.30'
+	
+	// Test
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.security:spring-security-test'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+    options.annotationProcessorPath = configurations.annotationProcessor
+}

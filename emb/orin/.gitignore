@@ -1,0 +1,10 @@
+
+# Build artifacts
+build/
+install/
+log/
+# 모든 .pyc 파일 무시
+*.pyc
+
+# __pycache__ 폴더 전체 무시 (Python 3)
+__pycache__/

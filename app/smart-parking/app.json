@@ -1,0 +1,56 @@
+{
+  "expo": {
+    "name": "ZeroJuice",
+    "slug": "zerojuice",
+    "version": "1.0.0",
+    "scheme": "zerojuice",
+    "orientation": "portrait",
+    "icon": "./assets/ApplicationLogo.png",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": false,
+    "splash": {
+      "image": "./assets/splash/zerojuiceLogo.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#FAFAFA"
+    },
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/ApplicationLogo.png",
+        "backgroundColor": "#ffffff"
+      },
+      "edgeToEdgeEnabled": true,
+      "predictiveBackGestureEnabled": false,
+      "package": "com.ssafy.zerojuice",
+      "googleServicesFile": "./google-services.json"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "be9aaa91-aae6-49f5-a92e-d97cce457337"
+      }
+    },
+    "plugins": [
+      [
+        "@react-native-seoul/kakao-login",
+        {
+          "kakaoAppKey": "c8a5c9abeea16b6679090ca24519fc34"
+        }
+      ],
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "usesCleartextTraffic": true,
+            "kotlinVersion": "2.0.21"
+          }
+        }
+      ],
+      "expo-web-browser"
+    ]
+  }
+}

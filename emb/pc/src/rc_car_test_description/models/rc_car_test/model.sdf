@@ -1,0 +1,388 @@
+<sdf version='1.9'>
+  <model name='rc_car_test'>
+    <link name='base_link'>
+      <inertial>
+        <pose>0.01198903743912521 -9.041836686576751e-09 0.03410555157093881 0 0 0</pose>
+        <mass>11.37024892977737</mass>
+        <inertia>
+          <ixx>0.01266147334873826</ixx>
+          <ixy>1.772935441278107e-09</ixy>
+          <ixz>-0.00065576130499450744</ixz>
+          <iyy>0.067184653735211319</iyy>
+          <iyz>-1.5908161728828439e-10</iyz>
+          <izz>0.070436180386473313</izz>
+        </inertia>
+      </inertial>
+      <collision name='base_link_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>file://$(find rc_car_test_description)/meshes/base_link.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name='base_link_fixed_joint_lump__lidar_link_1_collision_1'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>file://$(find rc_car_test_description)/meshes/lidar_link_1.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='base_link_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>file://$(find rc_car_test_description)/meshes/base_link.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>0 0 0 1</diffuse>
+          <ambient>0 0 0 1</ambient>
+        </material>
+      </visual>
+      <visual name='base_link_fixed_joint_lump__lidar_link_1_visual_1'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>file://$(find rc_car_test_description)/meshes/lidar_link_1.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>0 0 0 1</diffuse>
+          <ambient>0 0 0 1</ambient>
+        </material>
+      </visual>
+    </link>
+    <joint name='steering_joint_left' type='revolute'>
+      <pose relative_to='base_link'>-0.0575 -0.042076 0.0075 0 0 0</pose>
+      <parent>base_link</parent>
+      <child>steering_left_1</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-0.78539800000000004</lower>
+          <upper>0.78539800000000004</upper>
+          <effort>100</effort>
+          <velocity>100</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='steering_left_1'>
+      <pose relative_to='steering_joint_left'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>9.024272579205572e-09 -0.002433451321498678 0.003749999999999988 0 0 0</pose>
+        <mass>0.014849326294414371</mass>
+        <inertia>
+          <ixx>1.0000000000000001e-05</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1.0000000000000001e-05</iyy>
+          <iyz>0</iyz>
+          <izz>2.0000000000000002e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='steering_left_1_collision'>
+        <pose>0.0575 0.042076 -0.0075 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>file://$(find rc_car_test_description)/meshes/steering_left_1.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='steering_left_1_visual'>
+        <pose>0.0575 0.042076 -0.0075 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>file://$(find rc_car_test_description)/meshes/steering_left_1.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>0 0 0 1</diffuse>
+          <ambient>0 0 0 1</ambient>
+        </material>
+      </visual>
+    </link>
+    <joint name='wheel_joint_front_left' type='revolute'>
+      <pose relative_to='steering_left_1'>0 -0.010924 0.00375 0 0 0</pose>
+      <parent>steering_left_1</parent>
+      <child>front_left_wheel_1</child>
+      <axis>
+        <xyz>0 -1 0</xyz>
+        <limit>
+          <lower>-10000000000000000</lower>
+          <upper>10000000000000000</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='front_left_wheel_1'>
+      <pose relative_to='wheel_joint_front_left'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>9.024272391855437e-09 -0.01300003914179915 -3.469446951953614e-17 0 0 0</pose>
+        <mass>0.080236669071765049</mass>
+        <inertia>
+          <ixx>2.5999999999999998e-05</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>4.1999999999999998e-05</iyy>
+          <iyz>0</iyz>
+          <izz>2.5999999999999998e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='front_left_wheel_1_collision'>
+        <pose>0.0575 0.053 -0.01125 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>file://$(find rc_car_test_description)/meshes/front_left_wheel_1.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='front_left_wheel_1_visual'>
+        <pose>0.0575 0.053 -0.01125 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>file://$(find rc_car_test_description)/meshes/front_left_wheel_1.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>0 0 0 1</diffuse>
+          <ambient>0 0 0 1</ambient>
+        </material>
+      </visual>
+    </link>
+    <joint name='steering_joint_right' type='revolute'>
+      <pose relative_to='base_link'>-0.0575 0.042076 0.0075 0 0 0</pose>
+      <parent>base_link</parent>
+      <child>steering_right_2</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-0.78539800000000004</lower>
+          <upper>0.78539800000000004</upper>
+          <effort>100</effort>
+          <velocity>100</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='steering_right_2'>
+      <pose relative_to='steering_joint_right'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>6.314393452555578e-16 0.002433412179699272 0.003750000000000083 0 0 0</pose>
+        <mass>0.014849326294414371</mass>
+        <inertia>
+          <ixx>1.0000000000000001e-05</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1.0000000000000001e-05</iyy>
+          <iyz>0</iyz>
+          <izz>2.0000000000000002e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='steering_right_2_collision'>
+        <pose>0.0575 -0.042076 -0.0075 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>file://$(find rc_car_test_description)/meshes/steering_right_2.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='steering_right_2_visual'>
+        <pose>0.0575 -0.042076 -0.0075 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>file://$(find rc_car_test_description)/meshes/steering_right_2.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>0 0 0 1</diffuse>
+          <ambient>0 0 0 1</ambient>
+        </material>
+      </visual>
+    </link>
+    <joint name='wheel_joint_front_right' type='revolute'>
+      <pose relative_to='steering_right_2'>0 0.010924 0.00375 0 0 0</pose>
+      <parent>steering_right_2</parent>
+      <child>front_right_wheel_1</child>
+      <axis>
+        <xyz>0 -1 0</xyz>
+        <limit>
+          <lower>-10000000000000000</lower>
+          <upper>10000000000000000</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='front_right_wheel_1'>
+      <pose relative_to='wheel_joint_front_right'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>7.840950111415168e-16 0.01299999999999957 1.595945597898663e-16 0 0 0</pose>
+        <mass>0.080236669071764993</mass>
+        <inertia>
+          <ixx>2.5999999999999998e-05</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>4.1999999999999998e-05</iyy>
+          <iyz>0</iyz>
+          <izz>2.5999999999999998e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='front_right_wheel_1_collision'>
+        <pose>0.0575 -0.053 -0.01125 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>file://$(find rc_car_test_description)/meshes/front_right_wheel_1.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='front_right_wheel_1_visual'>
+        <pose>0.0575 -0.053 -0.01125 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>file://$(find rc_car_test_description)/meshes/front_right_wheel_1.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>0 0 0 1</diffuse>
+          <ambient>0 0 0 1</ambient>
+        </material>
+      </visual>
+    </link>
+    <joint name='wheel_joint_rear_left' type='revolute'>
+      <pose relative_to='base_link'>0.0825 -0.053 0.0125 0 0 0</pose>
+      <parent>base_link</parent>
+      <child>rear_left_wheel_1</child>
+      <axis>
+        <xyz>0 -1 0</xyz>
+        <limit>
+          <lower>-10000000000000000</lower>
+          <upper>10000000000000000</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='rear_left_wheel_1'>
+      <pose relative_to='wheel_joint_rear_left'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>1.415539134519417e-08 -0.01300000911521226 -2.324529457808922e-16 0 0 0</pose>
+        <mass>0.080236669071765077</mass>
+        <inertia>
+          <ixx>2.5999999999999998e-05</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>4.1999999999999998e-05</iyy>
+          <iyz>0</iyz>
+          <izz>2.5999999999999998e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='rear_left_wheel_1_collision'>
+        <pose>-0.0825 0.053 -0.0125 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>file://$(find rc_car_test_description)/meshes/rear_left_wheel_1.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='rear_left_wheel_1_visual'>
+        <pose>-0.0825 0.053 -0.0125 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>file://$(find rc_car_test_description)/meshes/rear_left_wheel_1.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>0 0 0 1</diffuse>
+          <ambient>0 0 0 1</ambient>
+        </material>
+      </visual>
+    </link>
+    <joint name='wheel_joint_rear_right' type='revolute'>
+      <pose relative_to='base_link'>0.0825 0.053 0.0125 0 0 0</pose>
+      <parent>base_link</parent>
+      <child>rear_right_wheel_1</child>
+      <axis>
+        <xyz>0 -1 0</xyz>
+        <limit>
+          <lower>-10000000000000000</lower>
+          <upper>10000000000000000</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='rear_right_wheel_1'>
+      <pose relative_to='wheel_joint_rear_right'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>-1.249000902703301e-16 0.01299999999999982 1.734723475976807e-17 0 0 0</pose>
+        <mass>0.080236669071765021</mass>
+        <inertia>
+          <ixx>2.5999999999999998e-05</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>4.1999999999999998e-05</iyy>
+          <iyz>0</iyz>
+          <izz>2.5999999999999998e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='rear_right_wheel_1_collision'>
+        <pose>-0.0825 -0.053 -0.0125 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>file://$(find rc_car_test_description)/meshes/rear_right_wheel_1.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='rear_right_wheel_1_visual'>
+        <pose>-0.0825 -0.053 -0.0125 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>file://$(find rc_car_test_description)/meshes/rear_right_wheel_1.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>0 0 0 1</diffuse>
+          <ambient>0 0 0 1</ambient>
+        </material>
+      </visual>
+    </link>
+    <frame name='fix_9' attached_to='base_link'>
+      <pose>-0.115 0 0.023 0 -0 0</pose>
+    </frame>
+    <frame name='lidar_link_1' attached_to='fix_9'/>
+  </model>
+</sdf>

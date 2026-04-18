@@ -1,0 +1,50 @@
+# Expo
+.expo/
+dist/
+web-build/
+
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Environment
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.env
+
+# Build
+/android/app/build
+/android/.gradle
+/ios/.xcode.env.local
+/ios/Pods/
+/ios/build/
+
+# Keys & Secrets
+google-services.json
+GoogleService-Info.plist
+*.jks
+*.keystore
+service-account.json
+credentials.json
+key.properties
+*.pem
+*.cer
+
+# OS
+.DS_Store
+.lib/
+.thumb/
+thumbs.db
+
+# TypeScript
+*.tsbuildinfo
+
+# Editor
+.idea/
+.vscode/
+*.swp
+*.swo

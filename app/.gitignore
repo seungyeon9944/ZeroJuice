@@ -1,0 +1,55 @@
+# Android Studio / IntelliJ
+*.iml
+.gradle
+.idea/
+/local.properties
+local.properties
+/build
+/captures
+.externalNativeBuild
+.cxx
+
+# macOS
+.DS_Store
+*.pem
+
+# Node.js / React Native
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Expo
+.expo/
+dist/
+web-build/
+
+# Metro
+.metro-health-check*
+
+# TypeScript
+*.tsbuildinfo
+
+# Testing
+coverage/
+
+# Temporary files
+*.log
+*.tmp
+*.temp
+
+# Environment
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# 프로젝트 문서 (Git 제외)
+appvision.md
+feedback.md
+*.md.bak
+
+# Antigravity / Gemini
+.antigravityrules
+.gemini/

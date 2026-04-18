@@ -1,0 +1,94 @@
+spring:
+  application:
+    name: zerojuice
+
+  profiles:
+    active: local
+
+  # Database
+  datasource:
+    # 환경변수 무시하고 직접 설정
+    url: jdbc:mysql://i14a201.p.ssafy.io:8306/zerojuice?useSSL=false&serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    username: ${DB_USERNAME:admin}
+    password: ${DB_PASSWORD:zerostress!!}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 5
+      connection-timeout: 30000
+
+  # JPA
+  jpa:
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.MySQLDialect
+        default_batch_fetch_size: 100
+    show-sql: ${JPA_SHOW_SQL:false}
+    open-in-view: false
+
+# Server
+server:
+  port: ${SERVER_PORT:8080}
+  servlet:
+    context-path: /api/v1
+
+# JWT
+jwt:
+  secret: ${JWT_SECRET:zerojuice-parking-system-secret-key-must-be-at-least-256-bits-long-for-hs256-algorithm}
+  access-token-validity: ${JWT_ACCESS_VALIDITY:90000000}    # 25시간 (ms)
+  refresh-token-validity: ${JWT_REFRESH_VALIDITY:604800000} # 7일 (ms)
+
+# MQTT
+mqtt:
+  broker-url: "tcp://13.209.9.201:8082"
+
+  sub:
+    client-id: zerojuice-sub
+    topics:
+      pose: car/+/pose
+      ack: car/+/ack
+      rfid: rfid/exit
+      rfid-enter: rfid/enter
+    qos:
+      pose: 0
+      ack: 1
+      rfid: 0
+      rfid-enter: 0
+
+  pub:
+    client-id: zerojuice-pub
+    topics:
+      command: car/%s/command # carNo 포맷팅용
+    qos:
+      command: 1
+
+# Firebase FCM
+firebase:
+  credentials-path: ${FIREBASE_CREDENTIALS_PATH:classpath:firebase-service-account.json}
+
+# Swagger/OpenAPI
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    operations-sorter: method
+    tags-sorter: alpha
+    doc-expansion: none
+  default-consumes-media-type: application/json
+  default-produces-media-type: application/json
+
+# Logging
+logging:
+  level:
+    root: INFO
+    com.zerojuice: ${LOG_LEVEL:INFO}
+    org.hibernate.SQL: ${LOG_LEVEL_SQL:DEBUG}
+    org.hibernate.type.descriptor.sql.BasicBinder: ${LOG_LEVEL_SQL_BIND:TRACE}
+
+parking:
+  queue:
+    initial-slots: ${PARKING_QUEUE_INITIAL_SLOTS:3,6,2,1}
